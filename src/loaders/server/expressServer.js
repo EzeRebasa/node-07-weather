@@ -34,7 +34,7 @@ class ExpressServer {
             res.status(200).end();
         });
 
-        this.app.use(`${this.basePath}/users`, require('../../routes/users.routes'));
+        this.app.use(`${this.basePath}/weather`, require('../../routes/weather'));
     }
 
     _notFound() {

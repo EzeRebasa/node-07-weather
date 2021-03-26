@@ -10,11 +10,16 @@ const { findCities } = require('../services/cityService');
  * @param {express.Response} res 
  */
 
-const cities = async (req, res) => {
-    const cities = await findCities(req.params.city);
-    const success = new Success(cities);
+const cities = async (req, res, next) => {
+    try {
 
-    res.json(success);
+        const cities = await findCities(req.params.city);
+        const success = new Success(cities);
+    
+        res.json(success);
+    }catch(err){
+        next(err);
+    }
 };
 
 

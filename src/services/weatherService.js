@@ -20,11 +20,11 @@ const weatherByCoordinates = async (lon, lat) => {
 const weatherByCityId = async (city, id) => {
     const cities = await cityRepository.findCities(city);
 
-    const cityData = cities.features.filter( e =>  e.id === id );
+    const cityData = cities.features.find( e =>  e.id === id );
     const lon = cityData[0].geometry.coordinates[0];
     const lat = cityData[0].geometry.coordinates[1];
 
-    return weatherByCoordinates(lon, lat);
+    return await weatherByCoordinates(lon, lat);
 }
 
 module.exports = {

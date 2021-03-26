@@ -12,11 +12,14 @@ const { weatherByCoordinates: weatherByCoordinatesService, weatherByCityId: weat
  */
 
 const weatherByCoordinates = async (req, res) => {
-
-    const { lon, lat } = req.query;
-    const weather = await weatherByCoordinatesService(lon, lat);
-    const success = new Success(weather);
-    res.json(success);
+    try {
+        const { lon, lat } = req.query;
+        const weather = await weatherByCoordinatesService(lon, lat);
+        const success = new Success(weather);
+        res.json(success);
+    } catch (err) {
+        next(err);
+    }
 };
 
 /**
@@ -26,11 +29,17 @@ const weatherByCoordinates = async (req, res) => {
  */
 
 const weatherByCityId = async (req, res) => {
-    logger.info(JSON.stringify(req.params));
-    const { city, id } = req.params;
-    const weather = await weatherByCityIdService(city, id);
-    const success = new Success(weather);
-    res.json(success);
+
+    try {
+        logger.info(JSON.stringify(req.params));
+        const { city, id } = req.params;
+        const weather = await weatherByCityIdService(city, id);
+        const success = new Success(weather);
+        res.json(success);
+
+    } catch (err) {
+        next(err);
+    }
 };
 
 module.exports = {

@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "API Rest base repo.",
-    "description": "## This is a base api to start new projects.",
+    "title": "API Rest Weather.",
+    "description": "## This is an api weather.",
     "version": "0.0.1",
     "contact": {
       "email": "ezequielrebasa@gmail.com"
@@ -14,31 +14,31 @@
       "description": "Desarrollo"
     },
     {
-      "url": "https://node-05-restserver.herokuapp.com/api/v1",
+      "url": "https://node-07-weather.herokuapp.com/api/v1",
       "description": "Producción"
     }
   ],
   "tags": [
     {
-      "name": "users",
-      "description": "Operations about users."
+      "name": "weather",
+      "description": "Find cities weather."
     }
   ],
   "paths": {
-    "/users/": {
+    "/weather/": {
       "get": {
         "tags": [
-          "users"
+          "weather"
         ],
-        "summary": "Get a list of all existing users.",
+        "summary": "Get weather of a city by longitude and latitude.",
         "description": "",
         "responses": {
           "200": {
-            "description": "The array of users in JSON format.",
+            "description": "An object with status and city data, in JSON format.",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
+                  "type": "object",
                   "items": {
                     "$ref": "#/components/schemas/User"
                   }

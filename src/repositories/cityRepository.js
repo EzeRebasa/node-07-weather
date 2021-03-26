@@ -3,7 +3,7 @@ const axios = require('axios');
 const logger = require('../loaders/logger');
 
 
-class cityRepository {
+class CityRepository {
     constructor() {
         this.limit = 10;
         this.language = 'es';
@@ -14,7 +14,6 @@ class cityRepository {
     async findCities(city) {
 
         try {
-
             const instance = axios.create({
                 baseURL: `${this.basePath}${city}.json`,
                 params: {
@@ -32,5 +31,8 @@ class cityRepository {
             throw err;
         }
     }
+
+    
+
 }
-module.exports = cityRepository;
+module.exports = CityRepository;

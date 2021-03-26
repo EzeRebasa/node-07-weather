@@ -35,6 +35,7 @@ class ExpressServer {
         });
 
         this.app.use(`${this.basePath}/weather`, require('../../routes/weather'));
+        this.app.use(`${this.basePath}/cities`, require('../../routes/cities'));
     }
 
     _notFound() {
